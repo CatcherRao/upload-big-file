@@ -1,7 +1,7 @@
 {
   "name": "upload-big-file",
   "version": "1.0.0",
-  "description": "a demo of upload big file",
+  "description": "a demo of upload big file based on express4 and vue2",
   "author": "catcher.rao 4423761@qq.com",
   "scripts": {
     "server": "nodemon --watch server --delay 100ms server/App.js",
