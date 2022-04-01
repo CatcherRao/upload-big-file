@@ -15,7 +15,7 @@ app.use(morgan('short'));
 
 
 //表单解析
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 
 
 //json解析
@@ -32,10 +32,10 @@ app.use(express.static(path.join(__dirname, '../staticFile'), {
 }));
 
 
-//设置json文件最大5m
+//设置json文件最大2m
 app.use(express.json(
   {
-    limit: '5m'
+    limit: '2m'
   }
 ));
 
