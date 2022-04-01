@@ -15,7 +15,7 @@ app.use(morgan('short'));
 
 
 //表单解析
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 //json解析
