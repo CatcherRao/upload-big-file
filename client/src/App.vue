@@ -24,6 +24,7 @@
 const uuid = require('uuid');
 import axios from 'axios';
 import {ajax, uploadChuck, mergeChuck} from '@/api/common';
+import {Message} from 'element-ui';
 
 const SIZE = 5 * 1024 * 1024; // 切片大小 5m
 
@@ -88,6 +89,7 @@ export default {
           'Content-Type': 'application/json'
         }
       });
+      console.log(res);
       if (res && res.data && res.data.code) {
         this.successUpload();
       }
@@ -105,7 +107,7 @@ export default {
 
     },
     successUpload() {
-      this.$message.success('上传成功~');
+      Message.success('上传成功~');
       this.xhrList = [];
       this.fileList = [];
       this.requestList = [];

@@ -1,15 +1,19 @@
 import Vue from 'vue';
-import ElementUI from 'element-ui';
 import {Loading} from 'element-ui';
 import App from './App';
-import 'element-ui/lib/theme-chalk/index.css';
 
+import {Upload, Button} from 'element-ui';
+
+Vue.use(Upload);
+Vue.use(Button);
+
+import 'element-ui/lib/theme-chalk/upload.css';
+import 'element-ui/lib/theme-chalk/button.css';
+import 'element-ui/lib/theme-chalk/message.css';
 
 Vue.prototype.$loading = function (options = {text: '上传中~'}) {
   return Loading.service(options);
 };
-
-Vue.use(ElementUI, {size: 'small'});
 
 Vue.config.productionTip = false;
 

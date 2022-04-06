@@ -29,12 +29,19 @@ router.post('/mergeChuck', async (req, res) => {
     const savePath = path.resolve(__dirname, '../../staticFile' + url);
     // 临时文件存储位置
     const chunkDir = path.resolve(__dirname, '../../staticFile' + '/~files/' + body.fileId);
+    // 合并切片
     for (let i = 0; i < +body.count; i++) {
-      // 写入文件
-      const file = await fs.readFileSync(chunkDir + '_' + i);
-      await fs.appendFileSync(savePath, file);
-      // 删除本次使用的chunk
-      await fs.unlinkSync(chunkDir + '_' + i);
+      try {
+        const file = fs.readFileSync(chunkDir + '_' + i);
+        fs.appendFileSync(savePath, file);
+      } catch (e) {
+        console.log(e);
+        return res.status(500);
+      }
+    }
+    // 删除切片
+    for (let i = 0; i < +body.count; i++) {
+      fs.unlinkSync(chunkDir + '_' + i);
     }
     //绝对路径
     const URL = req.protocol + '://' + req.headers.host + url;
